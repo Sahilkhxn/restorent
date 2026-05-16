@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Our fine dining menu - Elegance Restaurant">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Menu - Elegance Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .menu-section {
+            margin: 3rem 0;
+        }
+
+        .menu-section h3 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .menu-item {
+            padding: 1.5rem;
+            border-left: 3px solid var(--secondary-color);
+            background: #f9f9f9;
+        }
+
+        .menu-item h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-description {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-price {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .menu-page {
+            padding-top: 100px;
+            background: white;
+        }
+
+        /* Responsive for menu page */
+        @media (max-width: 1024px) {
+            .menu-page {
+                padding-top: 80px;
+            }
+
+            .menu-section h3 {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-page {
+                padding-top: 70px;
+            }
+
+            .menu-section {
+                margin: 2rem 0;
+            }
+
+            .menu-section h3 {
+                font-size: 1.5rem;
+                padding-bottom: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .menu-items {
+                gap: 1rem;
+            }
+
+            .menu-item {
+                padding: 1rem;
+                border-left-width: 4px;
+            }
+
+            .menu-item h4 {
+                font-size: 1rem;
+            }
+
+            .menu-item-description {
+                font-size: 0.85rem;
+            }
+
+            .menu-item-price {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-page {
+                padding-top: 60px;
+            }
+
+            .menu-section {
+                margin: 1.5rem 0;
+            }
+
+            .menu-section h3 {
+                font-size: 1.2rem;
+                padding-bottom: 0.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .menu-items {
+                gap: 0.8rem;
+            }
+
+            .menu-item {
+                padding: 0.8rem;
+            }
+
+            .menu-item h4 {
+                font-size: 0.95rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .menu-item-description {
+                font-size: 0.8rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .menu-item-price {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Elegance</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="menu.html" class="nav-link active">Menu</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="menu-page">
+        <div class="container">
+            <h1 style="text-align: center; font-size: 3rem; margin: 2rem 0; color: var(--primary-color);">Our Menu</h1>
+
+            <!-- Appetizers -->
+            <div class="menu-section">
+                <h3>Appetizers</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>Lobster Bisque</h4>
+                        <p class="menu-item-description">Creamy perfection with sherry, truffle oil, and crispy croutons</p>
+                        <span class="menu-item-price">$22</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Foie Gras Terrine</h4>
+                        <p class="menu-item-description">Served with toasted brioche and fig compote</p>
+                        <span class="menu-item-price">$28</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Oysters Royale</h4>
+                        <p class="menu-item-description">Selection of three premium oysters with champagne mignonette</p>
+                        <span class="menu-item-price">$24</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Scallops en Coquille</h4>
+                        <p class="menu-item-description">Pan-seared diver scallops with saffron beurre blanc</p>
+                        <span class="menu-item-price">$26</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Courses -->
+            <div class="menu-section">
+                <h3>Main Courses</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>Pan-Seared Salmon</h4>
+                        <p class="menu-item-description">Served with truffle risotto, microgreens, and beurre blanc</p>
+                        <span class="menu-item-price">$38</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Prime Wagyu Steak</h4>
+                        <p class="menu-item-description">A5 certified beef with black truffle sauce, herb butter, and seasonal vegetables</p>
+                        <span class="menu-item-price">$62</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Filet Mignon</h4>
+                        <p class="menu-item-description">Aged USDA Prime cut with red wine reduction and truffle mashed potatoes</p>
+                        <span class="menu-item-price">$52</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Dover Sole Meunière</h4>
+                        <p class="menu-item-description">Whole fish filleted tableside with lemon butter and capers</p>
+                        <span class="menu-item-price">$44</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Roasted Duck Breast</h4>
+                        <p class="menu-item-description">Cherry gastrique, wild mushroom risotto, and crispy skin</p>
+                        <span class="menu-item-price">$42</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Lamb Chops</h4>
+                        <p class="menu-item-description">Herb-crusted with rosemary jus and gratin dauphinois</p>
+                        <span class="menu-item-price">$48</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-section">
+                <h3>Desserts</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>Chocolate Soufflé</h4>
+                        <p class="menu-item-description">Decadent dark chocolate with vanilla bean ice cream and coulis</p>
+                        <span class="menu-item-price">$16</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Crème Brûlée</h4>
+                        <p class="menu-item-description">Classic vanilla with caramelized sugar crust and fresh berries</p>
+                        <span class="menu-item-price">$14</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Panna Cotta</h4>
+                        <p class="menu-item-description">Silky Italian cream with passion fruit coulis</p>
+                        <span class="menu-item-price">$13</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Grand Finale</h4>
+                        <p class="menu-item-description">Chef's selection of desserts and petit fours for two</p>
+                        <span class="menu-item-price">$32</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div class="menu-section">
+                <h3>Beverages</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <h4>Wine Selection</h4>
+                        <p class="menu-item-description">Curated collection of fine wines from world-renowned vineyards</p>
+                        <span class="menu-item-price">Starting at $45</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Champagne & Sparkling</h4>
+                        <p class="menu-item-description">Premium selections from France's finest regions</p>
+                        <span class="menu-item-price">Starting at $60</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Cocktails</h4>
+                        <p class="menu-item-description">Craft cocktails crafted by our expert mixologists</p>
+                        <span class="menu-item-price">$14 - $18</span>
+                    </div>
+                    <div class="menu-item">
+                        <h4>Coffee & Tea</h4>
+                        <p class="menu-item-description">Premium selections to complement your meal</p>
+                        <span class="menu-item-price">$6 - $8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Elegance Restaurant. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

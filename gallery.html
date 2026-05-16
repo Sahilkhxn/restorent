@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Photo gallery - Elegance Restaurant">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Gallery - Elegance Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .gallery-page {
+            padding-top: 100px;
+            background: white;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 3rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 1;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(212, 175, 55, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--secondary-color);
+        }
+
+        .modal-prev,
+        .modal-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        .modal-prev {
+            left: -60px;
+        }
+
+        .modal-next {
+            right: -60px;
+        }
+
+        .modal-prev:hover,
+        .modal-next:hover {
+            color: var(--secondary-color);
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-size: 3rem;
+            margin: 2rem 0;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-page {
+                padding-top: 80px;
+            }
+
+            .gallery-title {
+                font-size: 2.2rem;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-page {
+                padding-top: 70px;
+            }
+
+            .gallery-title {
+                font-size: 1.8rem;
+                margin: 1.5rem 0;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                padding: 2rem 0;
+            }
+
+            .gallery-item {
+                aspect-ratio: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-page {
+                padding-top: 60px;
+            }
+
+            .gallery-title {
+                font-size: 1.3rem;
+                margin: 1rem 0;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 0.8rem;
+                padding: 1.5rem 0;
+            }
+
+            .gallery-overlay {
+                opacity: 0.9;
+            }
+
+            .gallery-caption {
+                font-size: 0.9rem;
+            }
+
+            .modal-prev,
+            .modal-next {
+                font-size: 1.2rem;
+                padding: 0.5rem;
+                left: 5px;
+            }
+
+            .modal-next {
+                left: auto;
+                right: 5px;
+            }
+
+            .modal-close {
+                top: 10px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Elegance</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="gallery-page">
+        <div class="container">
+            <h1 class="gallery-title">Our Gallery</h1>
+            <div class="gallery-container">
+                <div class="gallery-item" onclick="openModal(0)">
+                    <img src="https://images.unsplash.com/photo-1504674900568-0f2fcb009e0b?w=400&h=400&fit=crop" alt="Restaurant Interior">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Restaurant Interior</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal(1)">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop" alt="Gourmet Dishes">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Gourmet Dishes</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal(2)">
+                    <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=400&h=400&fit=crop" alt="Chef Preparing">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Chef at Work</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal(3)">
+                    <img src="https://images.unsplash.com/photo-1543521521-89e63e3e89b9?w=400&h=400&fit=crop" alt="Desserts">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Exquisite Desserts</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal(4)">
+                    <img src="https://images.unsplash.com/photo-1504674900568-0f2fcb009e0b?w=400&h=400&fit=crop" alt="Fine Wine Selection">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Wine Selection</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal(5)">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop" alt="Elegant Plating">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Elegant Plating</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal(6)">
+                    <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=400&h=400&fit=crop" alt="Private Dining">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Private Dining</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openModal(7)">
+                    <img src="https://images.unsplash.com/photo-1543521521-89e63e3e89b9?w=400&h=400&fit=crop" alt="Seasonal Menu">
+                    <div class="gallery-overlay">
+                        <span class="gallery-caption">Seasonal Menu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <span class="modal-prev" onclick="changeImage(-1)">&#10094;</span>
+            <span class="modal-next" onclick="changeImage(1)">&#10095;</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Elegance Restaurant. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const galleryImages = [
+            'https://images.unsplash.com/photo-1504674900568-0f2fcb009e0b?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1543521521-89e63e3e89b9?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1504674900568-0f2fcb009e0b?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=800&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1543521521-89e63e3e89b9?w=800&h=800&fit=crop'
+        ];
+
+        let currentImageIndex = 0;
+
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = galleryImages[index];
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex >= galleryImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = galleryImages.length - 1;
+            }
+            document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+        }
+
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+                if (e.key === 'Escape') closeModal();
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Elegance - An unforgettable culinary fine dining experience">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>Elegance - Fine Dining Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Elegance</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="menu.html" class="nav-link">Menu</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Elegance</h1>
+            <p>An Unforgettable Culinary Experience</p>
+            <a href="menu.html" class="cta-button">Explore Our Menu</a>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Us</h2>
+                    <p>Welcome to Elegance, where culinary excellence meets sophisticated ambiance. Our award-winning chef crafts exquisite dishes using only the finest ingredients, sourced locally and internationally.</p>
+                    <p>With over 20 years of experience, we've established ourselves as a premier destination for fine dining. Our intimate setting, impeccable service, and exceptional cuisine create memories that last a lifetime.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>20+</h3>
+                            <p>Years of Excellence</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Menu Items</p>
+                        </div>
+                        <div class="stat">
+                            <h3>5★</h3>
+                            <p>Michelin Rating</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1577958312846-e1e5b88dbe8c?w=500&h=500&fit=crop" alt="Chef preparing dish">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Dishes -->
+    <section class="featured">
+        <div class="container">
+            <h2>Featured Dishes</h2>
+            <div class="dishes-grid">
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=300&fit=crop" alt="Pan-Seared Salmon">
+                    <h3>Pan-Seared Salmon</h3>
+                    <p>Served with truffle risotto and seasonal vegetables</p>
+                    <span class="price">$38</span>
+                </div>
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=300&h=300&fit=crop" alt="Wagyu Steak">
+                    <h3>Prime Wagyu Steak</h3>
+                    <p>A5 certified with black truffle sauce and herb butter</p>
+                    <span class="price">$62</span>
+                </div>
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=300&fit=crop" alt="Lobster Bisque">
+                    <h3>Lobster Bisque</h3>
+                    <p>Creamy perfection with sherry and crispy croutons</p>
+                    <span class="price">$22</span>
+                </div>
+                <div class="dish-card">
+                    <img src="https://images.unsplash.com/photo-1543521521-89e63e3e89b9?w=300&h=300&fit=crop" alt="Chocolate Soufflé">
+                    <h3>Chocolate Soufflé</h3>
+                    <p>Decadent dark chocolate with vanilla ice cream</p>
+                    <span class="price">$16</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h3>Location</h3>
+                        <p>123 Gourmet Avenue<br>New York, NY 10001</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Phone</h3>
+                        <p>(555) 123-4567</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Hours</h3>
+                        <p>Tuesday - Thursday: 5pm - 11pm<br>Friday - Saturday: 5pm - 12am<br>Sunday: 5pm - 10pm<br>Monday: Closed</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Email</h3>
+                        <p>info@elegancerestaurant.com</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="subject" placeholder="Subject">
+                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Elegance Restaurant. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
